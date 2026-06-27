@@ -8,8 +8,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
   min-height: 100vh;
   background-color: #121214;
   background-image:
@@ -29,33 +28,13 @@ body {
     );
 }
 
-.scroll-container {
-  height: 40vh;
-  width: 30vw;
-  border: 2px solid #fefefe11;
-  border-radius: 1rem;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-}
-
-.scroll-container::-webkit-scrollbar {
-  display: none;
-}
-
-section {
-  height: 40vh;
-  scroll-snap-align: start;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .card {
   background-color: #1a1a1e;
   width: 350px;
   padding: 2.2rem;
   border-radius: 1rem;
   position: relative;
+  anchor-name: --card-anchor;
 }
 
 @property --angle {
@@ -92,8 +71,8 @@ section {
   filter: blur(5px);
 }
 
-.card2::after,
-.card2::before {
+.second-type::after,
+.second-type::before {
   background: conic-gradient(from var(--angle), transparent 70%, #00d2ff);
 }
 
@@ -124,4 +103,19 @@ section {
   color: #a0a0aa;
   font-size: 1rem;
   line-height: 1.6;
+}
+
+.tag {
+  position-anchor: --card-anchor;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  height: 30px;
+  width: 30px;
+  padding: 1rem;
+  border-radius: 50%;
+  background-color: #00d2ff;
+
 }
