@@ -1,0 +1,145 @@
+/* Reset and Container Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #121214;
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.1) 0px,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px,
+      transparent 40px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.1) 0px,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px,
+      transparent 40px
+    );
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 350px;
+  height: 350px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  anchor-name: --card;
+}
+
+/* Card Hover Effect */
+.card:hover {
+  box-shadow: 0 20px 40px 0 rgba(31, 38, 135, 0.5);
+  border-color: rgba(255, 255, 255, 0.4);
+  border-top-right-radius: 3rem;
+  corner-top-right-shape: scoop;
+}
+
+.card::before {
+  content: "❤️";
+  scale: 0;
+  position: absolute;
+  position-anchor: --card;
+  position-area: top right;
+  translate: -50% 50%;
+  height: 4rem;
+  width: 4rem;
+  background-color: #1f1c2c;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card::after {
+    content: '';
+    height: 3em;
+    width: 3em;
+    position: absolute;
+    position-anchor: --card;
+    top: anchor(top);
+    right: anchor(right);
+    /* background-color: red; */
+}
+
+.card:hover::before {
+  scale: 1;
+}
+
+/* Image Wrapper */
+.card-image-wrapper {
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.stylish-card:hover .card-image-wrapper img {
+  transform: scale(1.08);
+}
+
+/* Card Content */
+.card-content {
+  padding: 20px;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #ffffff;
+}
+
+.card-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Button Styling */
+.card-btn {
+  align-self: flex-start;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.card-btn:hover {
+  background: #ffffff;
+  color: #1f1c2c;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+}
