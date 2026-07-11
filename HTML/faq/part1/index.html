@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive HTML & CSS FAQ Section</title>
+  <style>
+    /* Reset & Base Variables */
+    :root {
+      --primary-color: #4f46e5;
+      --text-main: #1f2937;
+      --text-muted: #4b5563;
+      --bg-accent: #f9fafb;
+      --border-color: #e5e7eb;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f3f4f6;
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* FAQ Container Wrapper */
+    .faq-container {
+      width: 100%;
+      max-width: 700px;
+      background-color: #ffffff;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .faq-title {
+      font-size: 1.85rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--text-main);
+    }
+
+    /* Accordion Item Styles */
+    details {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* State change when open */
+    details[open] {
+      border-color: var(--primary-color);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.1);
+    }
+
+    /* Summary / Question Header */
+    summary {
+      list-style: none; /* Hides default marker in modern browsers */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* Hide default marker in Safari */
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary:hover {
+      background-color: var(--bg-accent);
+      color: var(--primary-color);
+    }
+
+    /* Custom CSS Chevron Icon */
+    summary::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid var(--text-muted);
+      border-bottom: 2px solid var(--text-muted);
+      transform: rotate(45deg);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      margin-right: 0.25rem;
+    }
+
+    /* Dynamic Icon Rotation when open */
+    details[open] summary::after {
+      transform: rotate(-135deg);
+      border-color: var(--primary-color);
+    }
+
+    /* Content Body / Answer Styling */
+    .faq-content {
+      padding: 0 1.25rem 1.25rem 1.25rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      border-top: 1px solid transparent;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    details[open] .faq-content {
+      border-top: 1px solid var(--border-color);
+      background-color: var(--bg-accent);
+    }
+
+    /* Smooth Appearance Animation */
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="faq-container">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+
+    <!-- FAQ Item 1 -->
+     <!-- It has an "open" attribute that keeps it open when the page loads -->
+    <details open> 
+      <summary>How does the CSS-only accordion work?</summary>
+      <div class="faq-content">
+        <p>It uses HTML's native <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> tags. The browser handles the open and closed states automatically without any JavaScript overhead.</p>
+      </div>
+    </details>
+
+    <!-- FAQ Item 2 -->
+    <details>
+      <summary>Is this component fully accessible?</summary>
+      <div class="faq-content">
+        <p>Yes. Because it uses semantic HTML tags, keyboard navigation (using Tab and Enter/Space) and screen readers are supported right out of the box natively.</p>
+      </div>
+    </details>
+
+    <!-- FAQ Item 3 -->
+    <details>
+      <summary>Can I customize the color scheme easily?</summary>
+      <div class="faq-content">
+        <p>Absolutely. You can modify the CSS variables located inside the <code>:root</code> selector at the top of the stylesheet to match your own branding colors.</p>
+      </div>
+    </details>
+
+    <!-- FAQ Item 4 -->
+    <details>
+      <summary>How do I make an item open by default?</summary>
+      <div class="faq-content">
+        <p>Simply add the boolean <code>open</code> attribute directly inside the opening <code>&lt;details&gt;</code> tag of the specific question you want expanded.</p>
+      </div>
+    </details>
+  </div>
+
+</body>
+</html>

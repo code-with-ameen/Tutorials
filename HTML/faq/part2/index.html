@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive HTML & CSS FAQ Section</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="faq-container">
+      <h2 class="faq-title">Frequently Asked Questions</h2>
+
+      <!-- FAQ Item 1 (Keeps "open" when page loads) -->
+      <details open>
+        <summary>How does the CSS-only accordion work?</summary>
+        <div class="faq-content">
+          <p>
+            It uses HTML's native <code>&lt;details&gt;</code> and
+            <code>&lt;summary&gt;</code> tags. The browser handles the open and
+            closed states automatically without any JavaScript overhead.
+          </p>
+        </div>
+      </details>
+
+      <!-- FAQ Item 2 -->
+      <details>
+        <summary>Is this component fully accessible?</summary>
+        <div class="faq-content">
+          <p>
+            Yes. Because it uses semantic HTML tags, keyboard navigation (using
+            Tab and Enter/Space) and screen readers are supported right out of
+            the box natively.
+          </p>
+        </div>
+      </details>
+
+      <!-- FAQ Item 3 -->
+      <details>
+        <summary>Can I customize the color scheme easily?</summary>
+        <div class="faq-content">
+          <p>
+            Absolutely. You can modify the CSS variables located inside the
+            <code>:root</code> selector at the top of the stylesheet to match
+            your own branding colors.
+          </p>
+        </div>
+      </details>
+
+      <!-- FAQ Item 4 -->
+      <details>
+        <summary>How do I make an item open by default?</summary>
+        <div class="faq-content">
+          <p>
+            Simply add the boolean <code>open</code> attribute directly inside
+            the opening <code>&lt;details&gt;</code> tag of the specific
+            question you want expanded.
+          </p>
+        </div>
+      </details>
+    </div>
+  </body>
+</html>
