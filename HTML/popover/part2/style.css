@@ -1,0 +1,133 @@
+/* Reset and Page Centering Setup */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f7f6;
+}
+
+/* 1. Main Trigger Button Styles */
+.trigger-btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.15);
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.trigger-btn:hover {
+  background-color: #0056b3;
+}
+
+.trigger-btn:active {
+  transform: scale(0.98);
+}
+
+/* 2. Base Popover Styles (The "Closed" State) */
+#smooth-popover {
+  padding: 24px;
+  /* margin: auto;  It will center the 'Popover' window */
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 320px;
+  background-color: white;
+  color: #333;
+
+  /* Master transitions for smooth opening AND closing */
+  transition:
+    opacity 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    display 0.4s ease allow-discrete,
+    overlay 0.4s ease allow-discrete;
+
+  /* Initial positioning for closing exit animation */
+  opacity: 0;
+  transform: translateY(-30px) scale(0.9);
+}
+
+/* 3. Popover Active Styles (The "Open" State) */
+#smooth-popover:popover-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* 4. Entry Animation Initial State (Runs the split second it opens) */
+@starting-style {
+  #smooth-popover:popover-open {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.9);
+  }
+}
+
+/* 5. Backdrop Darkening Layer Transitions */
+#smooth-popover::backdrop {
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  transition:
+    background-color 0.4s ease,
+    backdrop-filter 0.4s ease,
+    display 0.4s ease allow-discrete,
+    overlay 0.4s ease allow-discrete; 
+}
+
+#smooth-popover:popover-open::backdrop {
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+@starting-style {
+  #smooth-popover:popover-open::backdrop {
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+  }
+}
+
+/* 6. Typography & Close Button Content Styles */
+#smooth-popover h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+#smooth-popover p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.close-btn {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.close-btn:hover {
+  background-color: #e2e6ea;
+}

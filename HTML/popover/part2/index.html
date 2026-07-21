@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smooth Native HTML/CSS Popover</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <!-- Trigger Element -->
+    <button class="trigger-btn" popovertarget="smooth-popover">Click Me</button>
+
+    <!-- Popover Markup -->
+    <div id="smooth-popover" popover>
+      <h3>Success!</h3>
+      <p>
+        This layout uses native top-layer rendering. It animates both open and
+        shut flawlessly without JavaScript helper plugins.
+      </p>
+
+      <!-- Action Target Backout -->
+      <button
+        class="close-btn"
+        popovertarget="smooth-popover"
+        popovertargetaction="hide"
+      >
+        Dismiss Window
+      </button>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Native HTML/CSS Popover</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #121214;
+        background-image:
+          repeating-linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.1) 0px,
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px,
+            transparent 40px
+          ),
+          repeating-linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.1) 0px,
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px,
+            transparent 40px
+          );
+      }
+      /* Trigger Button Styling */
+      .trigger-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      /* Popover Content Styling */
+      #my-popover {
+        padding: 24px;
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        max-width: 300px;
+        background-color: white;
+        margin: auto;
+
+        /* Optional: Smooth entry/exit transitions */
+        transition: opacity 0.3s ease;
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      /* Target the popover only when it is active */
+      #my-popover:popover-open {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Style the background backdrop layer */
+      #my-popover::backdrop {
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(2px);
+      }
+
+      /* Inner Close Button */
+      .close-btn {
+        margin-top: 15px;
+        padding: 6px 12px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 1. The Trigger Button -->
+    <button class="trigger-btn" popovertarget="my-popover">Open Popover</button>
+
+    <!-- 2. The Popover Element -->
+    <div id="my-popover" popover>
+      <h3>Popover Title</h3>
+      <p>
+        This floating window is built completely with native HTML and CSS
+        attributes!
+      </p>
+
+      <!-- 3. Optional Explicit Close Button -->
+      <button
+        class="close-btn"
+        popovertarget="my-popover"
+        popovertargetaction="hide"
+      >
+        Close
+      </button>
+    </div>
+  </body>
+</html>
